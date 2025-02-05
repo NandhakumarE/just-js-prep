@@ -1,14 +1,8 @@
 /*
- How it works:
+ Polyfill for Array.prototype.filter
 
  Syntax:
- Array.filter((value, index, array) => boolean);
-
- - The callback function runs for each element in the array.
- - It includes only those elements for which the callback returns `true`.
-
- Returns:
- - A new array containing the filtered elements.
+ array.simpleFilter((value, index, array) => boolean);
 */
 
 // Implementation

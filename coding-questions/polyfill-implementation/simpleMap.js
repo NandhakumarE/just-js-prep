@@ -1,15 +1,8 @@
 /*
- How it works:
+Polyfill for Array.prototype.map
 
- Syntax:
- Array.map((value, index, array) => modifiedValue);
-
- - Iterates over each element in the array.
- - Transforms each element based on the callback function.
- - Does not modify the original array.
-
- Returns:
- - A new array with the modified values.
+Syntax:
+ array.simpleMap((value, index, array) => modifiedValue);
 */
 
 // Implementation.

@@ -1,25 +1,8 @@
 /*
- How it works:
+ Polyfill for Function.prototype.bind
 
  Syntax:
  functionName.bind(thisArg, arg1, arg2, ...);
-
- - Returns a new function with the specified `this` value (`thisArg`).
- - Prepares the function with optional arguments (`arg1, arg2, ...`) that are partially applied.
-
- Key Points:
- - Unlike `.call()` and `.apply()`, `.bind()` does not immediately invoke the function.
- - The new function created can be called later, with the provided `this` context and initial arguments.
-
- Example:
- function greet(message) {
-   console.log(`${message}, ${this.name}`);
- }
-
- const person = { name: "Alice" };
- const greetAlice = greet.bind(person, "Hello");
-
- greetAlice(); // Output: "Hello, Alice"
 */
 
 // Implementation

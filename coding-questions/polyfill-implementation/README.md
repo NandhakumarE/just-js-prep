@@ -8,8 +8,8 @@ This repository provides **JavaScript polyfills** for popular methods and functi
 - **[simpleFilter.js](https://github.com/NandhakumarE/just-js-prep/blob/main/coding-questions/polyfill-implementation/simpleFilter.js)**: Polyfill for `Array.prototype.filter`
 - **[simpleMap.js](https://github.com/NandhakumarE/just-js-prep/blob/main/coding-questions/polyfill-implementation/simpleMap.js)**: Polyfill for `Array.prototype.map`
 - **[simpleReduce.js](https://github.com/NandhakumarE/just-js-prep/blob/main/coding-questions/polyfill-implementation/simpleReduce.js)**: Polyfill for `Array.prototype.reduce`
-- **once.js**: Polyfill for ensuring a function is called only once
-- **memorize.js**: Polyfill to memorize function results for optimization
+- **[once.js](https://github.com/NandhakumarE/just-js-prep/blob/main/coding-questions/polyfill-implementation/once.js)**: Polyfill for ensuring a function is called only once
+- **[memorize.js](https://github.com/NandhakumarE/just-js-prep/blob/main/coding-questions/polyfill-implementation/memorize.js)**: Polyfill to memorize function results for optimization
 
 ## Polyfill Files
 Each polyfill file includes:
@@ -23,7 +23,7 @@ Each polyfill file includes:
 
 ```javascript
 /*
- Polyfill for Function.prototype.simpleBind
+ Polyfill for Function.prototype.bind
 
  Syntax:
  functionName.simpleBind(thisArg, arg1, arg2, ...);
@@ -47,7 +47,7 @@ Each polyfill file includes:
 
 ```javascript
 /*
- Polyfill for Function.prototype.simpleCall
+ Polyfill for Function.prototype.call
 
  Syntax:
  functionName.simpleCall(thisArg, arg1, arg2, ...);
@@ -70,7 +70,7 @@ Each polyfill file includes:
 
 ```javascript
 /*
-Polyfill for Function.prototype.simpleApply
+Polyfill for Function.prototype.apply
 
 Syntax:
  functionName.simpleApply(thisArg, [arg1, arg2, ...]);
@@ -94,7 +94,7 @@ Syntax:
 
 ```javascript
 /*
-Polyfill for Array.prototype.simpleFilter
+Polyfill for Array.prototype.filter
 
 Syntax:
  array.simpleFilter((value, index, array) => boolean);
@@ -117,7 +117,7 @@ Syntax:
 
 ```javascript
 /*
-Polyfill for Array.prototype.simpleMap
+Polyfill for Array.prototype.map
 
 Syntax:
  array.simpleMap((value, index, array) => modifiedValue);
@@ -158,6 +158,71 @@ Syntax:
  const sum = numbers.simpleReduce((acc, n) => acc + n, 0);
  console.log(sum); // Output: 10
 */
+```
+
+### Example: `once.js`
+
+```javascript
+/*
+Polyfill for Function Execution Only Once
+
+Syntax:
+ const runOnce = once(fn, context);
+ runOnce(...args); // Executes fn only once
+
+ - Ensures that a given function runs only once.
+ - Stores the result of the first execution and returns it on subsequent calls.
+ - Uses `apply` to maintain the original function's `this` context and arguments.
+
+ Use cases:
+ - Preventing multiple API calls for an initialization function.
+ - Running expensive computations only once.
+ - Ensuring event handlers execute only on the first trigger.
+
+ Example:
+ const initialize = once(() => console.log("Initialized!"));
+ initialize(); // Output: "Initialized!"
+ initialize(); // No output (returns stored result)
+*/
+
+```
+### Example: `memoize.js`
+
+```javascript
+/*
+Polyfill for Function.memoize (Caching function results)
+
+Syntax:
+ const memoizedFn = memorize(originalFunction);
+
+- Stores the results of expensive function calls and returns the cached result when the same inputs occur again.
+- Uses an internal object `map` to cache computed results.
+- Improves performance by avoiding redundant computations.
+
+Returns:
+- A new function that remembers previously computed results.
+
+Use Cases:
+1. **Optimizing Expensive Computations**  
+   - Avoids recalculating results for repeated inputs.  
+   - Example: Fibonacci sequence, factorial calculations.  
+2. **Reducing API Calls**  
+   - Caches previously fetched data to prevent unnecessary network requests.  
+3. **Improving UI Performance**  
+   - Avoids expensive DOM calculations and layout shifts.
+
+ Example 1: Optimizing Expensive Computations (Fibonacci)
+--------------------------------------------------------
+const memoizedFibonacci = memorize((n) => {
+  if (n <= 1) return n;
+  return memoizedFibonacci(n - 1) + memoizedFibonacci(n - 2);
+});
+
+console.time("With Memoization");
+console.log(memoizedFibonacci(35)); // Much faster due to caching
+console.timeEnd("With Memoization");
+*/
+
 ```
 
 ### How to Use

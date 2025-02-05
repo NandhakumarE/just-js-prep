@@ -1,15 +1,8 @@
 /*
- How it works:
+ Polyfill for Array.prototype.simpleReduce
 
  Syntax:
- Array.reduce((accumulator, value, index, array) => newAccumulator, initialValue);
-
- - Iterates over each element in the array.
- - Accumulates a single result based on the callback function.
- - Uses `initialValue` as the starting accumulator (optional).
-
- Returns:
- - The final accumulated result (can be a number, object, array, etc.).
+ array.simpleReduce((accumulator, value, index, array) => accumulator, initialValue);
 */
 
 // Implementation

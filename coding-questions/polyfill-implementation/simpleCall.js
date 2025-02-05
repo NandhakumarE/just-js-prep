@@ -1,21 +1,8 @@
 /*
- How it works:
+ Polyfill for Function.prototype.call
 
  Syntax:
  functionName.call(thisArg, arg1, arg2, ...);
-
- - Invokes the function with a specified `this` context (`thisArg`).
- - Passes additional arguments (`arg1, arg2, ...`) to the function.
-
- Use case:
- - Useful for borrowing methods from other objects or setting the `this` value explicitly.
-
- Example:
- const person = { name: "Alice" };
- function greet(greeting) {
-   console.log(`${greeting}, ${this.name}`);
- }
- greet.call(person, "Hello"); // Output: "Hello, Alice"
 */
 
 // Implementation

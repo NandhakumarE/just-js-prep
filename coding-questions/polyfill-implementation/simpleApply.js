@@ -1,22 +1,8 @@
 /*
- How it works:
+ Polyfill for Function.prototype.apply
 
  Syntax:
  functionName.apply(thisArg, [arg1, arg2, ...]);
-
- - Calls a function with a specified `this` value (`thisArg`).
- - Passes arguments as an array (`[arg1, arg2, ...]`).
-
- Use cases:
- - Useful when arguments are already in an array.
- - Borrowing methods from other objects.
- - Finding max/min values from an array using `Math.max` or `Math.min`.
-
- Example:
- function sum(a, b) {
-   return a + b;
- }
- console.log(sum.apply(null, [5, 10])); // Output: 15
 */
 
 // implementation
