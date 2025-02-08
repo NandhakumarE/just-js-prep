@@ -1,5 +1,5 @@
 # Polyfill Implementations
-This repository provides **JavaScript polyfills** for popular methods and functions that might not be supported in older browsers or environments. Polyfills act as "shims" or "fills" to bridge the gaps, ensuring that missing features in certain JavaScript engines are still available. This helps deliver **consistent and reliable behavior** across different browsers and platforms, providing a smoother experience for users regardless of their environment.
+This repository provides **JavaScript polyfills** for popular methods and functions that might not be supported in older browsers or environments. Polyfills act as "shims" or "fills" to bridge the gaps, ensuring that missing features in certain JavaScript engines are still available. This helps deliver **consistent and reliable behavior** across different browsers, providing a smoother experience for users regardless of their environment.
 
 ### Files in this Folder:
 - **[simpleBind.js](https://github.com/NandhakumarE/just-js-prep/blob/main/coding-questions/polyfill-implementation/simpleBind.js)**: Polyfill for `Function.prototype.bind`
@@ -10,6 +10,10 @@ This repository provides **JavaScript polyfills** for popular methods and functi
 - **[simpleReduce.js](https://github.com/NandhakumarE/just-js-prep/blob/main/coding-questions/polyfill-implementation/simpleReduce.js)**: Polyfill for `Array.prototype.reduce`
 - **[once.js](https://github.com/NandhakumarE/just-js-prep/blob/main/coding-questions/polyfill-implementation/once.js)**: Polyfill for ensuring a function is called only once
 - **[memorize.js](https://github.com/NandhakumarE/just-js-prep/blob/main/coding-questions/polyfill-implementation/memorize.js)**: Polyfill to memorize function results for optimization
+- **[simpleGroupBy.js](https://github.com/NandhakumarE/just-js-prep/blob/main/coding-questions/polyfill-implementation/simpleGroupBy.js)**: Polyfill for `Object.prototype.groupBy`
+- **[flattenObject.js](https://github.com/NandhakumarE/just-js-prep/blob/main/coding-questions/polyfill-implementation/flattenObject.js)**: Polyfill for  utility function to flatten a nested object
+- **[debounce.js](https://github.com/NandhakumarE/just-js-prep/blob/main/coding-questions/polyfill-implementation/debounce.js)**: Polyfill for Debounce Function
+- **[throttle.js](https://github.com/NandhakumarE/just-js-prep/blob/main/coding-questions/polyfill-implementation/throttle.js)**: Polyfill for Throttle Function
 
 ## Polyfill Files
 Each polyfill file includes:
@@ -112,7 +116,6 @@ Syntax:
  console.log(evenNumbers); // Output: [2, 4]
 */
 ```
-
 ### Example: `simpleMap.js`
 
 ```javascript
@@ -135,12 +138,11 @@ Syntax:
  console.log(doubled); // Output: [2, 4, 6]
 */
 ```
-
 ### Example: `simpleReduce.js`
 
 ```javascript
 /*
-Polyfill for Array.prototype.simpleReduce
+Polyfill for Array.prototype.reduce
 
 Syntax:
  array.simpleReduce((accumulator, value, index, array) => accumulator, initialValue);
@@ -159,7 +161,6 @@ Syntax:
  console.log(sum); // Output: 10
 */
 ```
-
 ### Example: `once.js`
 
 ```javascript
@@ -221,6 +222,131 @@ const memoizedFibonacci = memorize((n) => {
 console.time("With Memoization");
 console.log(memoizedFibonacci(35)); // Much faster due to caching
 console.timeEnd("With Memoization");
+*/
+
+```
+### Example: `simpleGroupBy.js`
+
+```javascript
+/*
+Polyfill for Object.prototype.groupBy
+
+Syntax:
+ const grouped = simpleGroupBy(items, callbackFn);
+ 
+ - Groups elements of an array (or characters of a string) based on the return value of `callbackFn`.
+ - Returns an object where keys are the computed group identifiers and values are arrays of grouped elements.
+ - Throws an error if `callbackFn` is not a function.
+ - Supports string input by splitting it into individual characters.
+
+Use cases:
+ - Categorizing data based on properties (e.g., grouping numbers by their integer part).
+ - Organizing strings by character occurrences.
+ - Clustering items based on computed values.
+
+Example:
+ simpleGroupBy([1.2, 1.5, 2.3, 2.8], Math.floor);
+ // Output: { 1: [1.2, 1.5], 2: [2.3, 2.8] }
+
+ simpleGroupBy("hello", (char) => char);
+ // Output: { h: ['h'], e: ['e'], l: ['l', 'l'], o: ['o'] }
+*/
+
+```
+### Example: `flattenObject.js`
+
+```javascript
+/*
+ Utility function to flatten a nested object
+
+ Syntax:
+ flattenObject(obj, parentKey, result);
+
+ Key Points:
+ - Converts a deeply nested object into a single-level object.
+ - Uses dot notation (e.g., "user.address.city") for nested keys.
+ - Preserves primitive values and arrays without modification.
+ - Handles null values properly, avoiding errors.
+
+ Example:
+ const nestedObj = {
+   user: {
+     name: "Alice",
+     address: {
+       city: "New York",
+       zip: 10001
+     }
+   },
+   hobbies: ["reading", "traveling"]
+ };
+
+ const flattened = flattenObject(nestedObj);
+
+ console.log(flattened);
+ // Output:
+ // {
+ //   "user.name": "Alice",
+ //   "user.address.city": "New York",
+ //   "user.address.zip": 10001",
+ //   "hobbies.0": "reading",
+ //   "hobbies.1": "traveling",
+ // }
+*/
+```
+### Example: `debounce.js`
+
+```javascript
+/*
+ Polyfill for Debounce Function
+
+ Syntax:
+ const debouncedFunc = debounce(callback, delay);
+
+ Key Points:
+ - Ensures a function is executed only after a specified delay.
+ - Resets the timer if the function is called again within the delay period.
+ - Useful for optimizing events like search inputs, resize, and button clicks.
+
+ Example:
+ function fetchData() {
+   console.log("API call made!");
+ }
+
+ const debouncedFetch = debounce(fetchData, 300);
+
+ // Simulating rapid calls
+ debouncedFetch();
+ debouncedFetch();
+ debouncedFetch();
+
+ // Only one "API call made!" will be logged after 300ms from the last call.
+*/
+```
+### Example: `throttle.js`
+
+```javascript
+/*
+ Polyfill for Throttle Function
+
+ Syntax:
+ const throttledFunc = throttle(callback, limit);
+
+ Key Points:
+ - Ensures a function is executed at most once in a specified time interval.
+ - Useful for optimizing events like scroll, resize, and mouse movements.
+ - Unlike debounce, it guarantees execution at regular intervals.
+
+ Example:
+ function logScroll() {
+   console.log("Scroll event triggered!");
+ }
+
+ const throttledScroll = throttle(logScroll, 1000);
+
+ window.addEventListener("scroll", throttledScroll);
+
+ // Even if the user scrolls continuously, "Scroll event triggered!"
+ // will be logged at most once every 1000ms.
 */
 
 ```
